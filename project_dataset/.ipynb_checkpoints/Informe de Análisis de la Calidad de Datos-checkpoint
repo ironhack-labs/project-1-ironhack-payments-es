@@ -1,0 +1,22 @@
+Para el analisis de calidad de datos es necesario tener en cuenta: 
+Verifica la existencia de valores faltantes y errores en los datos. (valores nulos, duplicados, inconsistencias de formato, etc.) y cómo los abordarás.
+Limpia los datos: eliminar duplicados, imputar valores nulos, corregir formatos de fechas, etc.
+
+
+Durante la verificacion se encontraron varios datos sin información, además, en el archivo de "lexique" habían datos que no se encontraron en los archivos de fees y cash request por lo que no se pudo hacer un analisis de ellos. sin embargo, se procedió a hacer la limpieza de datos haciendo la detección de valores faltantes y eliminación o imputación si es necesario.
+
+
+Hoja cash request:
+Cantidad de registros: 21,061 solicitudes de adelantos.
+Valores faltantes:
+La columna category tiene 18,865 valores faltantes (parece opcional, solo presente en incidentes).
+paid_at tiene 5,530 valores faltantes, lo cual es relevante si consideramos solicitudes no pagadas.
+from_date y to_date tienen 13,295 valores faltantes, lo que sugiere que no todas las solicitudes tienen un rango de fechas definido (probablemente relacionado con ciertos tipos de solicitudes).
+Las columnas clave como created_at y status no presentan valores faltantes, lo que es esencial para el análisis de cohortes.
+
+
+Hoja fees:
+Similarmente, algunas columnas críticas como category y from_date presentan muchos valores faltantes. Sin embargo, created_at y status están completas.
+
+
+Después de la limpieza revisamos con que datos nos quedamos y procedemos a hacer la asignacion de cohorte y el analisis de datos. 
